@@ -1,7 +1,7 @@
 # Introduction
-  *. jQuery is a JavaScript library.
-  *. jQuery is a lightweight "write less, do more" JavaScript library
-  *. The jQuery library includes the following features:
+  * jQuery is a JavaScript library.
+  * jQuery is a lightweight "write less, do more" JavaScript library
+  * The jQuery library includes the following features:
     * HTML element picking
     * HTML element actions
     * CSS actions
