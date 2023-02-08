@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <input type="checkbox" class="checkall">
+    <input type="checkbox" class="e_check">
+    <input type="checkbox" class="e_check">
+    <script>
+        $(function(){
+            $('.checkall').change(function(){
+                // console.log($('.checkall').prop('checked'));
+                $('.e_check').prop('checked',$('.checkall').prop('checked'))
+            })
+            $('.e_check').change(function(){
+                // :checked返回的是元素 用来查看被选中元素的个数
+                if ($('.e_check:checked').length == $('.e_check').length ) {
+                    $('.checkall').prop('checked',true);
+                }else {
+                    $('.checkall').prop('checked',false);
+                }
+            })
+        })
+    </script>
+</body>
+</html>

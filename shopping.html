@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .shopping {
+            width: 1200px;
+            margin: 50px auto;
+        }
+        em,
+        b {
+            font-style: normal;
+        }
+        .shopping_hd {
+            width: 100%;
+            height: 70px;
+            background-color: aqua;
+            margin-bottom: 20px;
+            line-height: 70px;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        .shopping_hd .text {
+            display: inline;
+        }
+        .checkall {
+            display: inline-block;
+        }
+        .shopping_hd span {
+            display: inline-block;
+            width: 140px;
+            text-align: center;
+        }
+        .shopping_hd .special {
+            width: 340px;
+        }
+        .shopping_bd {
+            width: 100%;
+            height: 600px;
+            background-color: aquamarine;
+            display: flex;
+            flex-direction: column;
+        }
+        .shopping_bd .shop_con {
+            border-top: 1px solid black;
+            flex: 1;
+            padding: 0 10px;
+        }
+        .shop_con {
+            line-height: 200px;
+        }
+        .shop_con .text {
+            display: inline;
+        }
+        .shop_con span {
+            display: inline-block;
+            width: 140px;
+            text-align: center;
+        }
+        .shop_con .special {
+            width: 340px;
+        }
+        .e_check {
+            display: inline-block;
+        }
+        .sum_module {
+            height: 60px;
+            background-color: pink;
+            display: flex;
+            justify-content: space-between;
+            line-height: 60px;
+            padding: 0 10px;
+        }
+        .sum_left span {
+            color: white;
+            padding: 5px 10px;
+            background-color: red;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .sum_left a {
+            font-size: 12px;
+            margin-right: 20px;
+            color: white;
+        }
+        .sum_right span:nth-child(1) {
+            margin-right: 20px;
+        }
+        .calculate {
+            position: relative;
+        }
+        a {
+            text-decoration: none;
+        }
+        .cal {
+            line-height: 0;
+            border: 1px solid black;
+            height: 40px;
+        }
+        .cal input {
+            text-align: center;
+            outline: none;
+            border: 0;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            width: 80px;
+            height: 100%;
+        }
+        .cal a {
+            padding: 0 5px;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="shopping">
+        <div class="shopping_hd">
+            <div class="checkall">
+                <input type="checkbox">
+                <div class="text">全选</div>
+            </div>
+            <span class="special">12</span>
+            <span>商品</span>
+            <span>单价</span>
+            <span>数量</span>
+            <span>总价</span>
+            <span>操作</span>
+        </div>
+        <div class="shopping_bd">
+            <div class="shop_con">
+                <div class="e_check">
+                    <input type="checkbox">
+                    <div class="text">单选</div>
+                </div>
+                <span class="special">12</span>
+                <span>商品</span>
+                <span class="per_price">¥12.60</span>
+                <span class="cal_module">
+                    <span class="cal">
+                        <a href="javascript:;" class="decrease">-</a>
+                        <input type="text" value="1" class="ipt">
+                        <a href="javascript:;" class="add">+</a>
+                    </span> 
+                </span>
+                <span class="price">¥12.60</span>
+                <span class="del"><a href="javascript:;">删除</a></span>
+            </div>
+            <div class="shop_con">
+                <div class="e_check">
+                    <input type="checkbox">
+                    <div class="text">单选</div>
+                </div>
+                <span class="special">12</span>
+                <span>商品</span>
+                <span class="per_price">¥14.40</span>
+                <span class="cal_module">
+                    <span class="cal">
+                        <a href="javascript:;" class="decrease">-</a>
+                        <input type="text" value="1" class="ipt">
+                        <a href="javascript:;" class="add">+</a>
+                    </span> 
+                </span>
+                <span class="price">¥14.40</span>
+                <span class="del"><a href="javascript:;">删除</a></span>
+            </div>
+            <div class="shop_con">
+                <div class="e_check">
+                    <input type="checkbox">
+                    <div class="text">单选</div>
+                </div>
+                <span class="special">12</span>
+                <span>商品</span>
+                <span class="per_price">¥14.50</span>
+                <span class="cal_module">
+                    <span class="cal">
+                        <a href="javascript:;" class="decrease">-</a>
+                        <input type="text" value="1" class="ipt">
+                        <a href="javascript:;" class="add">+</a>
+                    </span> 
+                </span>
+                <span class="price">¥14.50</span>
+                <span class="del"><a href="javascript:;">删除</a></span>
+            </div>
+        </div>
+        <div class="sum_module">
+            <div class="sum_left">
+                <a href="javascipt:;">删除选中按钮</a>
+                <span>清空购物车</span>
+            </div>
+            <div class="sum_right">
+                <span>一共<b>0</b>件商品</span>
+                <span>共计<em>0</em></span>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            // 单选全选模块制作
+            $('.checkall input').change(function(){
+                $('.e_check input').prop('checked',$('.checkall input').prop('checked'));
+                // 全选情况下背景颜色添加
+                if ($(this).prop('checked')) {
+                    // 在全选按钮被选中给shop_con添加yellow背景
+                    $('.shop_con').addClass('yellow');
+                }else {
+                    // 在全选按钮被选中给shop_con移除yellow背景
+                    $('.shop_con').removeClass('yellow');
+                }
+            })
+            $('.e_check input').change(function(){
+                // 通过:checked判断选中的个数从而实现当单选全部选中全选打勾的效果
+                if ($('.e_check input:checked').length == $('.e_check input').length) {
+                    // 因为:checked获取到的是一个元素集合若想取长度需要拿length取
+                    $('.checkall input').prop('checked',true);
+                }else {
+                    $('.checkall input').prop('checked',false);
+                }
+                // 当某一个单选按钮检测其被选中就将它的shop_con的背景颜色改变其他的去除
+                if ($(this).prop('checked')) {
+                    $(this).parents('.shop_con').addClass('yellow');
+                }else {
+                    $(this).parents('.shop_con').removeClass('yellow');
+                }
+
+            })
+            // 加号模块
+            $('.add').click(function(){
+                var now_price = $(this).parents('.cal_module').siblings('.per_price').html().substr(1);
+                // 截取substr一定要从第二位开始 以防得到¥ 不方便计算
+                // now_price代表的是单价
+                var n = $(this).siblings('input').val();
+                // 利用val(获取表单内的数据)
+                n++;
+                // 每点一次n++再赋值给表单的value
+                $(this).siblings('input').val(n);
+                // 计算这件商品总价钱
+                $(this).parents('.cal_module').siblings('.price').html('¥'+(now_price*n).toFixed(2));
+                getSum()
+            })
+            // 减号模块 数量不能小于一件
+            $('.decrease').click(function(){
+                var n = $(this).siblings('input').val();
+                if (n==1) {
+                    return false;
+                    // 当小于一件返回false不再执行后面的语句
+                }
+                n--;
+                $(this).siblings('input').val(n);
+                getSum()
+
+            })
+            // 当手动修改表单内容相应内容发生修改
+            // focus blur算一个过程才会做出反应
+            $('.ipt').change(function(){
+                var n = $(this).val(); 
+                // 获取修改后的表单值
+                var now_price = $(this).parents('.cal_module').siblings('.per_price').html().substr(1);
+                $(this).parents('.cal_module').siblings('.price').html('¥'+(now_price*n).toFixed(2));
+                getSum()
+            })
+            getSum();
+            function getSum(){
+                // 计算总价时封装的函数 以上除了单选全选模块和他无关其余都要重新计算
+                var count = 0;
+                var cal_price = 0;
+                // 应为要计算总和需要设置初始值为0
+                // 利用each遍历每一个ipt和每一个价钱
+                $('.ipt').each(function(i,ele){
+                    count += parseInt($(ele).val());
+                    // 求ipt和
+                })
+                $('.price').each(function(i,ele){
+                    cal_price += parseFloat($(ele).text().substr(1));
+                    // 求价钱和
+                })
+                // 将两个值分别给b 和 em标签
+                $('.sum_right b').text(count);
+                $('.sum_right em').text('¥'+cal_price.toFixed(2));
+            }
+            // 删除模块制作 通过点击删除查找其父级shop_con 进行删除
+            $('.del').click(function(){
+                $(this).parent().remove();
+            })
+            // 删除选中按钮
+            $('.sum_left a').click(function(){
+                $('.e_check input:checked').parents('.shop_con').remove();
+                getSum();
+            })
+            // 删除全部
+            $('.sum_left span').click(function(){
+                $('.shop_con').remove();
+                getSum();
+            })
+            
+
+        })
+    </script>
+</body>
+</html>

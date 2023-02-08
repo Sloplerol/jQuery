@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+        
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <script>
+        // 修改参数单是数字也好使
+        // console.log($('div').css('width',300));
+        // 只给属性名返回属性值        
+        // 属性值必须要加引号否则会当成变量看
+        // console.log($('div').css('width'));
+        // 参数可以是对象的形式 属性名可以不加引号但是属性值如果不是数字的形式必须要加引号
+        $('div').css({
+            width: 400,
+            height: 400,
+            // 复合属性必须采取驼峰命名法
+            backgroundColor: 'red'
+        })
+    </script>
+</body>
+</html>

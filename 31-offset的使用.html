@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .father {
+            position: relative;
+            margin: 100px auto 0;
+            width: 400px;
+            height: 400px;
+            background-color: aqua;
+        }
+        .son {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="other"></div>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        $(function(){
+            // offset获取的是相对于整个文档的
+            console.log($('.father').offset().top);
+            console.log($('.son').offset().top);
+            // 给son设置offset值就算父亲有相对定位还是相对于整个文档的
+            // $('.son').offset({
+            //     left: 900,
+            //     top: 200
+            // })
+            // position()获取的是相对于带有定位的父亲的内部位置
+            // 如果没有父级则以整个文档为主
+            console.log($('.son').position().left);
+            console.log($('.father').position());
+        })
+    </script>
+</body>
+</html>

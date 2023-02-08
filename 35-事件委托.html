@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <ol></ol>
+    <script>
+        $(function(){
+            // 事件委派在父元素身上
+            // 但是触发事件是在子元素身上
+            // $('ul').on('click','li',function(){
+            //     $(this).css('color','red');
+            // })
+            // $('ol li').click(function(){
+            //     alert('dvs');
+            // })
+            // 因为li是后创建的所以刚开始点击并不会触发
+            // 用on可以给未来绑定的动态事件绑定事件
+            $('ol').on('click','li',function(){
+                alert('666');
+            })
+            var li = $('<li>asdsa</li>');
+            $('ol').append(li);
+        })
+    </script>
+</body>
+</html>

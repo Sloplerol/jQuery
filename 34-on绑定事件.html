@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+        .purple {
+            background-color: purple;
+        }
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <script>
+        $(function(){
+            // 利用on来绑定多个事件类型
+            // $('div').on({
+            //     mouseenter: function(){
+            //         $(this).css('backgroundColor','pink');
+            //     },
+            //     mouseleave: function(){
+            //         $(this).css('backgroundColor','yellow');
+            //     },
+            //     click: function(){
+            //         $(this).css('backgroundColor','blue');
+            //     }
+            // })
+            // 当事件类型相近时可以这么写
+            $('div').on('mouseenter mouseleave',function(){
+                // alert('111');
+                // 当鼠标经过和离开都会触发事件
+                // 和toggleCalss可以实现hover的效果
+                $(this).toggleClass('purple');
+            })
+        })
+    </script>
+</body>
+</html>

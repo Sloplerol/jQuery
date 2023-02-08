@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        console.dir(div);
+        // 原方法获取的是DOM对象
+        $('div');
+        console.dir($('div'));
+        // jQuery获取的是jquery对象不能混用
+        // $('div').style.display = 'none'; div是jquery对象不能使用dom对象去修改属性
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            padding: 10px;
+            border: 10px solid red;
+            margin: 0 10px;
+        }
+        
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <script>
+        $(function(){
+            $('div').width(300);
+            // 如果width包含参数则是对width进行修改
+            console.log($('div').width());
+            // width获取的只有width值
+            // console.log($('div').innerWidth());
+            // innerWidth计算的是包含padding的
+            // console.log($('div').outerWidth());
+            // outerWidth计算的是包含padding和border的
+            // console.log($('div').outerWidth(true));
+            // 如果outerWidth参数为true包含margin
+        })
+    </script>
+</body>
+</html>

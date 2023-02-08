@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box ul li {
+            display: none;
+            width: 300px;
+        }
+        .box ul li a {
+            float: right;
+        }
+        .box {
+            margin: 100px auto 0;
+            width: 600px;
+            height: 600px;border: 1px solid black;
+        }
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <button>dianji</button>
+        <ul></ul>
+    </div>
+    
+    <script>
+        $(function(){
+            $('button').on('click',function(){
+            var li = $('<li></li>');
+            li.html($('textarea').val()+'<a href="javascript:;">del</a>');
+            $('ul').prepend(li);
+            li.slideDown();
+            $('textarea').val('');
+        })
+        // 因为生成的a时动态创建的所以时是不能直接ul li a去获取元素
+        $('ul').on('click','a',function(){
+            $(this).parent().slideUp(function(){
+                // 彻底删除小li
+                $(this).remove();
+            });
+            // slideUp里面也可以装回调函数
+        })
+        })
+        
+    </script>
+</body>
+</html>

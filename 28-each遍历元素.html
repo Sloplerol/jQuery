@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="/jquery.min.js"></script>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        $(function(){
+            var arr = ['red','blue','green'];
+            var sum = 0;
+            $('div').each(function(index,DomEle){
+                // each有两个参数第一个是索引 第二个是Dom元素标签 要想使用jquery方法需要进行转化
+                console.log(index);
+                console.log(DomEle);
+                $(DomEle).css('color',arr[index]);
+                sum+=parseInt($(DomEle).text());
+            })
+            console.log(sum);
+            // 想要遍历dom对象(标签)用$('div').each
+            // $.each用来遍历数组对象还有元素,处理数据
+            // $.each($('div'),function(i,ele){
+            //     console.log(i);
+            //     console.log(ele);
+            // })
+            // $.each(arr,function(i,ele){
+            //     console.log(i);
+            //     console.log(ele);
+            // })  
+            $.each({
+                uname: 'zjj',
+                age: 15
+            },function(i,ele){
+                console.log(i);
+                console.log(ele);
+            })          
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .big_box {
+            line-height: 40px;
+            display: flex;
+            margin: 10px 0;
+        }
+        .box {
+            width: 210px;
+            height: 40px;
+            background-color: aqua;
+            display: flex;
+            line-height: 40px;
+            text-align: center;
+            margin: 0 40px;
+        }
+        .box span {
+            cursor: pointer;
+            padding: 0 10px;
+        }
+        .box input {
+            flex: 1;
+        }
+        .sum_module {
+            margin: 30px 0 0 400px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .del {
+            margin-left: 20px;
+        }
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="big_box">
+        <div class="price">¥14.50</div>
+    <div class="box">
+        <span class="decrease">-</span>
+        <input type="text" value="1" class="ipt">
+        <span class="add">+</span>
+    </div>
+        <div class="tol_price">¥14.50</div>
+        <span class="del"><a href="javascript:;">删除</a></span>
+    </div>
+    <div class="big_box">
+        <div class="price">¥14.50</div>
+    <div class="box">
+        <span class="decrease">-</span>
+        <input type="text" value="1" class="ipt">
+        <span class="add">+</span>
+    </div>
+        <div class="tol_price">¥14.50</div>
+        <span class="del"><a href="javascript:;">删除</a></span>
+    </div>
+    <div class="big_box">
+        <div class="price">¥14.50</div>
+    <div class="box">
+        <span class="decrease">-</span>
+        <input type="text" value="1" class="ipt">
+        <span class="add">+</span>
+    </div>
+        <div class="tol_price">¥14.50</div>
+        <span class="del"><a href="javascript:;">删除</a></span>
+    </div>
+    <div class="sum_module">
+        已选<em>1</em>件商品,共计<i>0</i>元钱
+    </div>
+    
+    <script>
+        $(function(){
+            $('.decrease').click(function(){
+                var i = $(this).parent().siblings('.price').html();
+                i = i.substr(1);
+                var n = $(this).siblings('.ipt').val();
+                if (n==1) {
+                    return false;
+                }
+                n--;
+                $(this).siblings('.ipt').val(n);
+                $(this).parent().siblings('.tol_price').html('¥'+n*i);
+                getSum()
+            })
+            $('.add').click(function(){
+                var i = $(this).parent().siblings('.price').html();
+                i = i.substr(1);
+                console.log(i);
+                // 将人名币符号排除在外 
+                var n = $(this).siblings('.ipt').val();
+                n++;
+                $(this).siblings('.ipt').val(n);
+                $(this).parent().siblings('.tol_price').html('¥'+(n*i).toFixed(2));
+                getSum();
+            })
+            $('.ipt').change(function(){
+                var j = $(this).val();
+                var p = $(this).parent().siblings('.price').html();
+                p = p.substr(1);
+                console.log(p);
+                $(this).parent().siblings('.tol_price').html('¥'+(p*j).toFixed(2));
+                getSum();
+            })
+            getSum();
+            function getSum(){
+                var count = 0;
+                var total_price = 0;
+                $('.ipt').each(function(index,ele){
+                    count+=parseInt($(ele).val());
+                })
+                $('.tol_price').each(function(index,ele){
+                    total_price += parseFloat($(ele).text().substr(1));
+                })
+                $('.sum_module em').text(count);
+                $('.sum_module i').text('¥'+total_price.toFixed(2));
+            }
+            $('.del a').click(function(){
+                $(this).parents('.big_box').remove();
+            })
+            
+        })
+    </script>
+</body>

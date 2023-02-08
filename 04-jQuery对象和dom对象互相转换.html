@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <video src="/mp4/WoWx9_Shadowlands_Intro.mp4" muted></video>
+    <script>
+        var myvideo = document.querySelector('video');
+        $('video');
+        // 将dom对象转化为jquery对象
+        // 直接将获取过来的dom对象添加$转化
+        $(myvideo);
+        // myvideo.play();
+        // 因为jquery是将video以数组的形式进行存储的
+        // 所以将jquery对象转化为dom对象利用下标索引进行转换
+        // 两种方法进行转化对象类型
+        // $('video')[0].play();
+        $('video').get(0).play();
+    </script>
+</body>
+</html>

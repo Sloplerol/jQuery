@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        img {
+            display: block;
+        }
+        .nav {
+            width: 900px;
+            height: 69px;
+            background-color: aqua;
+            margin: 100px auto 0;
+        }
+        .nav li {
+            position: relative;
+            width: 69px;
+            height: 69px;
+            float: left;
+        }
+        .nav .small {
+            position: absolute;
+            width: 69px;
+            height: 69px;
+            left: 0;
+            top: 0;
+        }
+        .big {
+            width: 224px;
+            height: 69px;
+        }
+        .nav .current {
+            width: 224px;
+            
+        }
+        .nav .big {
+            display: none;
+        }
+        .current .big {
+            display: block;
+        }
+        .current .small {
+            display: none;
+        }
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li class="current">
+                <a href="">
+                    <img src="/images/shoufengs1.webp" alt="" class="small">
+                    <img src="/images/shoufengb1.png" alt="" class="big"> 
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="/images/shoufengs2.webp" alt="" class="small">
+                    <img src="/images/shoufengb2.png" alt="" class="big">
+
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="/images/shoufengs3.webp" alt="" class="small">
+                    <img src="/images/shoufengb3.png" alt="" class="big">
+
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="/images/shoufengs4.webp" alt="" class="small">
+                    <img src="/images/shoufengb4.png" alt="" class="big">
+
+                </a>
+            </li>
+            <script>
+                $(function(){
+                    $('.nav li').mouseover(function(){
+                        $(this).stop().animate({
+                            width: 224
+                        }).find('.big').stop().fadeIn().siblings('.small').stop().fadeOut();
+                    })
+                    $('.nav li').mouseout(function(){
+                        $(this).stop().animate({
+                            width: 69
+                        }).find('.big').stop().fadeOut().siblings('.small').stop().fadeIn();
+                    })
+                })
+            </script>
+        </ul>
+    </div>
+</body>
+</html>

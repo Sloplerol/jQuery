@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="father1">
+        <div class="father2">
+            <div class="father3">
+                <div class="father4">
+                    <div class="son"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 利用parents指定某一父级元素
+        console.log($('.son').parents('.father1'));
+        var a = 1.42;
+        var b = 8;
+        // toFixed 2保留小数点后两位
+        console.log((a*b).toFixed(2));
+    </script>
+</body>
+</html>

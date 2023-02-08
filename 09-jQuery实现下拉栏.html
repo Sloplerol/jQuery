@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+        .nav {
+            position: relative;
+            width: 400px;
+            display: flex;
+        }
+        .dropdown {
+            text-align: center;
+            width: 100px;
+            border: 1px solid red;
+            margin-left: -1px;
+        }
+        .dropdown a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 20px;
+        }
+        .dropdown ul {
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: none;
+        }
+        .dropdown ul li {
+            width: 100px;
+            height: 40px;
+            border: 1px solid red;
+            border-collapse: collapse;
+            border-spacing: 0;
+            text-align: center;
+            line-height: 40px;
+            margin-top: -1px;
+            
+        }
+        .dropdown ul li:hover {
+            background-color: yellow;
+        }
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="nav">
+        <div class="dropdown">
+            <a href="">标题1</a>
+            <ul>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <a href="">标题1</a>
+            <ul>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <a href="">标题1</a>
+            <ul>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <a href="">标题1</a>
+            <ul>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            // $('.dropdown').mouseover(function(){
+            //     $(this).children('ul').slideDown(400);
+            // })
+            // $('.dropdown').mouseout(function(){
+            //     $(this).children('ul').slideUp(400);
+            // })
+            // 事件切换hover 相同对象对立事件的结合体
+            // 鼠标经过和离开的复合写法
+            // $('.dropdown').hover(function(){
+            //     $(this).children('ul').slideDown(200);
+            // },function(){
+            //     $(this).children('ul').slideUp(200);
+            // })
+            // 如果hover里只有一个函数那么鼠标经过和离开都会触发
+            $('.dropdown').hover(function(){
+                //需要写stop停止动画排队的效果
+                // stop一定要写上一次动画的前面
+                $(this).children('ul').stop().slideToggle(200);
+            })
+        })
+    </script>

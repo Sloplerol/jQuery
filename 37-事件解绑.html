@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: aqua;
+        }
+
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <ul>
+        <li>21</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <p>first</p>
+    <script>
+        $('div').on({
+            mouseover: function(){
+                console.log('999');
+            },
+            click: function(){
+                console.log('777');
+            }
+        })
+        // 将div所有的事件解除
+        // $('div').off();
+        // 将click这个事件接触
+        // $('div').off('click');
+        $('ul').on('click','li',function(){
+            $(this).css('color','red');
+        })
+        // 用来解除事件委托绑定
+        $('ul').off('click','li');
+        // one()事件只能触发一次
+        $('p').one('click',function(){
+            alert('我只能触发一次')
+        })
+    </script>
+</body>
+</html>

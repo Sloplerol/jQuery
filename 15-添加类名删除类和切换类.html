@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            transition: all .4s;
+        }
+        .current {
+            
+            transform: rotate(360deg);
+            background-color: pink;
+        }
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <script>
+        
+        $(function(){
+            // 添加类名 不需要加点 addClass不会覆盖掉原先的类名 而className会
+            // $('div').click(function(){
+            //     $(this).addClass('current');
+            // })
+            // 移除类名
+            // $('div').click(function(){
+            //     $(this).removeClass('current');
+            // })
+            // 自动切换方法一
+            // var flag = 1;
+            // $('div').click(function(){
+            //     if(flag) {
+            //         $(this).addClass('current');
+            //         flag = 0;
+            //     }else {
+            //         $(this).removeClass('current');
+            //         flag = 1;
+            // }
+            // })
+            // 自动切换方法二
+            // 自动切换类名
+            $('div').click(function(){
+                $(this).toggleClass('current');
+            })
+            
+        })
+    </script>
+</body>
+</html>

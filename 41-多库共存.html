@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/jquery.min.js"></script>
+    
+</head>
+<body>
+    <div></div>
+    <span></span>
+    <script>
+        $(function(){
+            function $(el){
+                return document.querySelector(el);
+            }
+            console.log($('div'));
+             // 当函数名和$符号冲突的时候就需要多库共存
+            // 解决方法一将$改成jQuery
+            jQuery.each();
+            // 解决方法二 释放对dollar符号的控制权 将ranodm暂时代替为dollar符号
+            var random = jQuery.noConflict();
+            console.log(random('span'));
+            random.each();
+        })
+    </script>
+</body>
+</html>

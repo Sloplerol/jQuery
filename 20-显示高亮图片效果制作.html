@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: black;
+        }
+        .wrap {
+            margin: 100px auto 0;
+            width: 600px;
+            height: 600px;
+            background-color: #7e807d;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .wrap .box {
+            margin: 10px;
+            flex: 46%;
+        }
+        .box img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">
+            <img src="/images/p1.avif" alt="">
+        </div>
+        <div class="box">
+            <img src="/images/p2.avif" alt="">
+        </div>
+        <div class="box">
+            <img src="/images/p3.avif" alt="">
+        </div>
+        <div class="box">
+            <img src="/images/p4.avif" alt="">
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $('.wrap .box').hover(function(){
+                $(this).siblings().stop().fadeTo(100,0.4);
+            },function(){
+                $(this).siblings().stop().fadeTo(100,1);
+            })
+        })
+    </script>
+</body>
+</html>

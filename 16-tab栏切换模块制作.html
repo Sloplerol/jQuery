@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .nav {
+            margin: 100px auto;
+            width: 800px;
+            height: 200px;
+            background-color: aqua;
+        }
+        .nav_hd {
+            width: 100%;
+            height: 50px;
+            background-color: aquamarine;
+            display: flex;
+        }
+        .nav_hd span {
+            flex: 1;
+            text-align: center;
+            line-height: 50px;
+        }
+        .current {
+            background-color: red;
+        }
+        
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="nav">
+        <div class="nav_hd">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+        </div>
+        <div class="nav_bd">
+            <div style="display: none">1</div>
+            <div style="display: none">2</div>
+            <div style="display: none">3</div>
+            <div style="display: none">4</div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            
+            // $('.nav_hd span').mouseover(function(){
+            //     var index = $(this).index();
+            //     $(this).css('background','red').siblings().css('background','');
+            //     $('.nav_bd div').eq(index).show().siblings().hide();
+            // })
+            // $('.nav_hd span').mouseout(function(){
+            //     $(this).css('background','');
+            //     // $('.nav_bd div').hide();
+            // })
+            $('.nav_hd span').click(function(){
+                $(this).addClass('current').siblings().removeClass('current');
+                var index = $(this).index();
+                $('.nav_bd div').eq(index).show().siblings().hide();
+            })
+        })
+    </script>
+</body>
+</html>

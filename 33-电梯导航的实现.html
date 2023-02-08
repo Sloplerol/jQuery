@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .top {
+            width: 1200px;
+            margin: 0 auto 0;
+            height: 300px;
+            background-color: purple;
+        }
+        .nav {
+            width: 1200px;
+            margin: 0 auto 0;
+            height: 600px;
+            background-color: yellow;
+        }
+        body {
+            height: 10000px;
+        }
+        .w {
+            width: 1200px;
+            margin: 0 auto 0;
+        }
+        .head {
+            height: 400px;
+            background-color: aquamarine;
+        }
+        .banner {
+            height: 600px;
+            background-color: pink;
+            
+        }
+        .footer {
+            height: 300px;
+            background-color: aqua;
+        }
+        .fixed {
+            display: none;
+            width: 50px;
+            height: 150px;
+            background-color: red;
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .fixed span {
+            line-height: 50px;
+            text-align: center;
+            display: block;
+        }
+        .pink {
+            background-color: pink;
+        }
+
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="top"></div>
+    <div class="nav"></div>
+    <div class="fixed">
+        <span>head</span>
+        <span>banner</span>
+        <span>footer</span>
+    </div>
+    <div class="w">
+        <div class="head"></div>
+        <div class="banner"></div>
+        <div class="footer"></div>
+    </div>
+    <script>
+        var nav = $('.nav').offset().top;
+        // 设置节流阀 做到点击和滑动到某一区域颜色切换独立的效果
+        var flag = true;
+        out();
+        // 封装out()为了在页面刷新的时候调用
+        // 以防一刷新fixed栏就没
+        // 并且在滑动的时候也调用来判断是否隐藏与显示
+        function out(){
+            if ($(document).scrollTop()>=nav) {
+                $('.fixed').fadeIn();
+            }else {
+                $('.fixed').fadeOut();
+            }
+        }
+        $(window).scroll(function(){
+            out();
+            // 设置节流阀在点击的时候不执行代码
+            if(flag) {
+                $('.w div').each(function(i,ele){
+                    // 利用each遍历每一个div当移动超过其距离顶部的距离利用排他思想给其附上颜色
+                if($(document).scrollTop()>=$(ele).offset().top) {
+                    $('.fixed span').eq(i).addClass('pink').siblings().removeClass('pink');
+                }
+            })
+            }
+        })
+        $('.fixed span').click(function(){
+            flag = false;
+            var index = $(this).index();
+            var current = $('.w div').eq(index).offset().top;
+            // fixed栏的每一个和中心每一个板块一对一进行对应
+            $('body,html').stop().animate({
+                // 添加动画并且做到点那个跳转到哪层电梯
+                scrollTop: current
+            },function(){
+                // 当点击事件结束后将节流阀打开
+                flag = true;
+                
+            })
+            $(this).addClass('pink').siblings().removeClass('pink');
+            
+        })
+    </script>
+</body>
+</html>

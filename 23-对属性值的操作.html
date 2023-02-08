@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <a href="http://wwww.baidu.com" title="zheshi">asdas</a>
+    <input type="checkbox">
+    <div index = '1'></div>
+    <span data-index="3"></span>
+    <script>
+        $(function(){
+            // prop单给一个参数是获取属性值
+            console.log($('a').prop('href'));
+            // 给两个参数修改属性值 第一个是属性名第二个是属性值
+            console.log($('a').prop('title','zhebushi'));
+            $('input').change(function(){
+                console.log($('input').prop('checked'));
+            })
+            // prop获取不了自定义属性值
+            console.log($('div').prop('index'));
+            // prop获取固定属性 attr获取自定义属性
+            console.log($('div').attr('index'));
+            $('div').attr('index',4)
+            console.log($('div').attr('index'));
+            console.log($('span').attr('data-index'));
+            $('span').attr('data-index',19)
+            console.log($('span').attr('data-index'));
+            // data数据缓存将数据存放到内存中充当变量
+            $('span').data('uname','zjj');
+            console.log($('span').data('uname'));
+            // 还可以data的形式直接data-index里的值此时不需要写data 返回的是数字型
+            console.log($('span').data('index'));
+        })
+    </script>
+</body>
+</html>

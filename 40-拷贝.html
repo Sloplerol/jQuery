@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        var obj = {
+            rname: 'andy',
+            id: 1,
+            msg: {
+                age: 18
+            }
+            
+        }
+        var targetObj = {
+            id: 0
+            
+        }
+        var obj1 = {
+            rname: 'zjj',
+            age: 19,
+            hobby: {
+                coding: 'xas'
+            }
+        }
+        var targetObj1 = {
+            rname: 'ljm',
+            hobby: {
+                sex: 'girl'
+            }
+        }
+        // 浅拷贝 
+        $.extend(targetObj,obj);
+        // 将obj的数据拷贝到targetObj里面 并且会覆盖掉重复的元素
+        // 默认情况下是浅拷贝
+        console.log(targetObj);
+        targetObj.msg.age = '20';
+        console.log(targetObj);
+        // targetobj拷贝的是obj复杂数据类型msg的地址
+        // 地址指向的都是同一块新开辟出来的空间
+        // 所以当修改targetObj的age的值 obj也会发生相应的修改
+        console.log(obj);
+        // 深拷贝 拷贝的不是地址而是新的数据hobby不会发生覆盖现象
+        $.extend(true,targetObj1,obj1);
+        console.log(targetObj1);
+        
+    </script>
+</body>
+</html>

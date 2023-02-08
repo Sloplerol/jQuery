@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <ol>
+        <li></li>
+        <li class="title"></li>
+        <li></li>
+        <li></li>
+    </ol>
+    <div class="current"></div>
+    <div></div>
+    <script>
+        $(function(){
+            // 筛洗与title兄弟级别的li对象
+            // $('ol .title').siblings('li').css('color','red');
+            // 筛选特定元素包含两种方法
+            // $('ol li:eq(1)').css('color','pink');
+            var index = 1;
+            $('ol li').eq(index).css('color','purple');
+            // 推荐使用第二种因为当声明变量并添加的时候如果是第一种在引号里面的需要引引加加
+            console.log($('div:first').hasClass('current'));
+            //hasCalss查看当前标签里是有这个类选择器
+            console.log($('div:last').hasClass('current'));
+        })
+
+    </script>
+</body>
+</html>

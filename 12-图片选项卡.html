@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            border: 0;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .big_module {
+            margin: 100px auto;
+            width: 400px;
+            height: 200px;
+            background-color: aqua;
+            display: flex;
+            
+        }
+        .left {
+            flex: 20%;
+            background-color: aquamarine;
+        }
+        
+        .left ul {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .left ul li {
+            text-align: center;
+            line-height: 66px;
+            flex: 1;
+        }
+        .right {
+            flex: 80%;
+            background-color: pink;
+        }
+        .right img {
+            
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="big_module">
+        <div class="left">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
+        <div class="right">
+            <div>
+                <img src="/images/jingdong1.avif" alt="">
+            </div>
+            <div style="display: none">
+                <img src="/images/jingdong2.avif" alt="">
+            </div>
+            <div style="display: none">
+                <img src="/images/jingdong3.avif" alt="">
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.left li').mouseover(function(){
+            var index = $(this).index();
+            console.log(index);
+            $('.right div').eq(index).show();
+            $('.right div').eq(index).siblings('div').hide();
+
+        })
+    </script>
+</body>
+</html>

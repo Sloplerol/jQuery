@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    asdsad
+    <button>123</button>
+    <button>123</button>
+    <button>123</button>
+    <button>123</button>
+    <script>
+        $('button').click(function(){
+            // 我的颜色变成红色我兄弟的颜色不变色
+            // $(this).css('color','red').siblings().css('color','');
+            // 我的颜色不变色我兄弟的颜色变为红色
+            // $(this).siblings().css('color','red');
+            $(this).css('color','blue').siblings().parent().css('color','yellow');
+            // 我的颜色变为蓝色我兄弟的父亲的颜色变为黄色
+        })
+    </script>
+</body>
+</html>

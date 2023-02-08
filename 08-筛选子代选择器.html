@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/jquery.min.js"></script>
+</head>
+<body>
+    <div class="grandfather">
+        <p>asd</p>
+        <div class="father">
+            <p>asdj</p>
+            <div class="son">
+                <p>sahdha</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        $(function(){
+            // console.log($('.son').parent());
+            // 获取最近一级父元素
+            // console.log($('.grandfather').children('p').css('color','pink'));
+            // children()获取的是亲儿子 子代选择器
+            // console.log($('.grandfather').find('p').css('color','red'));
+            // find()获取的是所有子类 后代选择器
+            
+        })
+    </script>
+</body>
+</html>
